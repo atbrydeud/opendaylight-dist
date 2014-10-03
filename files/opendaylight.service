@@ -1,0 +1,16 @@
+[Unit]
+Description=opendaylight
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill opendaylight
+ExecStartPre=-/usr/bin/docker rm opendaylight
+ExecStartPre=/usr/bin/docker load -i /docker_images/opendaylight_docker.tar
+ExecStart=/usr/bin/docker run --name opendaylight 533a3be7bb5c
+Restart=always
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
