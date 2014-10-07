@@ -8,9 +8,9 @@ SLOT="0"
 
 DESCRIPTION="A classical example to use when starting on something new."
 HOMEPAGE="http://wiki.gentoo.org/index.php?title=Basic_guide_to_write_Gentoo_Ebuilds"
-SRC_URI="http://localhost:8888/opendaylight.tar.gz"
+SRC_URI="http://localhost:9999/opendaylight.tar.gz"
 #inherit toolchain-funcs cros-workon systemd
-#inherit toolchain-funcs systemd
+inherit toolchain-funcs systemd
 
 LICENSE="MIT"
 #KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-usr"
@@ -25,4 +25,10 @@ fi
 src_install() {
 	insinto /docker_images/
 	doins opendaylight_docker.tar
+
+	systemd_dounit "${FILESDIR}"/${PN}.service
+}
+
+pkg_postinst() {
+	"${ROOT}"/usr/bin/docker load -i /docker_images/opendaylight_docker.tar
 }
