@@ -1,0 +1,8 @@
+#cloud-config
+
+coreos:
+    units:
+      - name: opendaylight-dist.service
+        enable: true
+        runtime: true
+        command: start

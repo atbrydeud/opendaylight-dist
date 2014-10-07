@@ -27,8 +27,7 @@ src_install() {
 	doins opendaylight_docker.tar
 
 	systemd_dounit "${FILESDIR}"/${PN}.service
-}
 
-pkg_postinst() {
-	"${ROOT}"/usr/bin/docker load -i /docker_images/opendaylight_docker.tar
+	insinto /usr/share/oem/
+	doins "${FILESDIR}"/cloud-config.yml
 }
