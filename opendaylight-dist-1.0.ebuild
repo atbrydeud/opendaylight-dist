@@ -27,7 +27,4 @@ src_install() {
 	doins opendaylight_docker.tar
 
 	systemd_dounit "${FILESDIR}"/${PN}.service
-
-	insinto /usr/share/oem/
-	doins "${FILESDIR}"/cloud-config.yml
 }
