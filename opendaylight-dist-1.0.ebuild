@@ -23,7 +23,7 @@ else
 fi
 
 src_install() {
-	insinto /docker_images/
+	insinto /usr/share/docker_images/
 	doins opendaylight_docker.tar
 
 	systemd_dounit "${FILESDIR}"/${PN}.service
