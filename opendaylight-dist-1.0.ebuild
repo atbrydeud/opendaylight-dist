@@ -8,7 +8,6 @@ SLOT="0"
 
 DESCRIPTION="A classical example to use when starting on something new."
 HOMEPAGE="http://wiki.gentoo.org/index.php?title=Basic_guide_to_write_Gentoo_Ebuilds"
-SRC_URI="http://localhost:9999/opendaylight.tar.gz"
 #inherit toolchain-funcs cros-workon systemd
 inherit toolchain-funcs systemd
 
