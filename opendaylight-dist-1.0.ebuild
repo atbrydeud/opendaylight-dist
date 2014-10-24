@@ -22,9 +22,13 @@ else
     KEYWORDS="amd64"
 fi
 
+src_unpack() {
+	mkdir opendaylight-dist-1.0
+}
+
 src_install() {
-	insinto /usr/share/docker_images/
-	doins opendaylight_docker.tar
+	#insinto /usr/share/docker_images/
+	#doins opendaylight_docker.tar
 
 	systemd_dounit "${FILESDIR}"/${PN}.service
 }
